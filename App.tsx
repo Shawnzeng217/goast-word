@@ -1,9 +1,9 @@
 
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { WordState, RibbonTab } from './types';
-import Ribbon from './components/Ribbon';
-import WordPage from './components/WordPage';
-import StatusBar from './components/StatusBar';
+import { WordState, RibbonTab } from './types.ts';
+import Ribbon from './components/Ribbon.tsx';
+import WordPage from './components/WordPage.tsx';
+import StatusBar from './components/StatusBar.tsx';
 
 const App: React.FC = () => {
   const [state, setState] = useState<WordState>({
@@ -14,9 +14,7 @@ const App: React.FC = () => {
     fileName: "Document1"
   });
 
-  // Track how many physical keystrokes have been made since the last character reveal
   const [keystrokeBuffer, setKeystrokeBuffer] = useState(0);
-  // The current randomized target (3-5) for the next character reveal
   const [targetThreshold, setTargetThreshold] = useState(() => Math.floor(Math.random() * 3) + 3);
 
   const [activeTab, setActiveTab] = useState<RibbonTab>(RibbonTab.Home);
@@ -51,7 +49,6 @@ const App: React.FC = () => {
       const newBuffer = prevBuffer + 1;
       
       if (newBuffer >= targetThreshold) {
-        // Reveal one character
         setState(prevState => {
           if (prevState.currentIndex >= prevState.originalText.length) return prevState;
           
@@ -67,7 +64,6 @@ const App: React.FC = () => {
           };
         });
         
-        // Reset buffer and pick a new random target (3-5) for next time
         setTargetThreshold(Math.floor(Math.random() * 3) + 3);
         return 0;
       }
@@ -90,7 +86,6 @@ const App: React.FC = () => {
         wordCount: words
       };
     });
-    // When deleting a character, we also reset the keystroke buffer
     setKeystrokeBuffer(0);
     setTargetThreshold(Math.floor(Math.random() * 3) + 3);
   }, []);

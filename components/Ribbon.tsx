@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { RibbonTab } from '../types';
+import { RibbonTab } from '../types.ts';
 
 interface RibbonProps {
   activeTab: RibbonTab;
@@ -13,7 +13,6 @@ const Ribbon: React.FC<RibbonProps> = ({ activeTab, setActiveTab, onUpload }) =>
 
   return (
     <nav className="word-ribbon-bg border-b word-border shrink-0 select-none">
-      {/* Tab Selectors */}
       <div className="flex items-center px-1 text-[13px] h-9">
         <div className="px-4 py-2 hover:bg-[#1a3a6b] cursor-pointer font-semibold uppercase bg-[#2b579a] text-white mr-1 transition-colors h-full flex items-center">File</div>
         {tabs.map(tab => (
@@ -31,9 +30,7 @@ const Ribbon: React.FC<RibbonProps> = ({ activeTab, setActiveTab, onUpload }) =>
         ))}
       </div>
 
-      {/* Toolbar Area */}
       <div className="h-24 bg-white border-b border-gray-200 flex items-center px-4 gap-6 overflow-hidden">
-        {/* Clipboard Group */}
         <div className="flex flex-col items-center border-r border-gray-100 pr-4 h-full pt-1">
           <div className="flex gap-2 mb-auto">
             <div className="flex flex-col items-center cursor-pointer hover:bg-gray-100 p-1 rounded">
@@ -54,7 +51,6 @@ const Ribbon: React.FC<RibbonProps> = ({ activeTab, setActiveTab, onUpload }) =>
           <span className="text-[10px] text-gray-400 mt-1 uppercase tracking-tighter">Clipboard</span>
         </div>
 
-        {/* Ghost Writing Config Group (File Upload) */}
         <div className="flex flex-col items-center border-r border-gray-100 pr-4 h-full pt-1">
           <div className="flex flex-col items-center justify-center flex-1">
             <label className="flex flex-col items-center cursor-pointer group hover:bg-gray-50 p-2 rounded transition-colors">
@@ -71,7 +67,6 @@ const Ribbon: React.FC<RibbonProps> = ({ activeTab, setActiveTab, onUpload }) =>
           <span className="text-[10px] text-gray-400 mt-1 uppercase tracking-tighter">Ghost Writing</span>
         </div>
 
-        {/* Font Group */}
         <div className="flex flex-col items-center border-r border-gray-100 pr-4 h-full pt-1">
           <div className="flex flex-col gap-1 mb-auto">
             <div className="flex gap-1">
@@ -99,5 +94,4 @@ const Ribbon: React.FC<RibbonProps> = ({ activeTab, setActiveTab, onUpload }) =>
   );
 };
 
-// Fix: Add default export to resolve "Module has no default export" error in App.tsx
 export default Ribbon;
