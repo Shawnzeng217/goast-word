@@ -1,0 +1,5 @@
+{
+  "name": "GhostWriter Word",
+  "description": "A Microsoft Word-inspired writing simulator where typing triggers the sequential appearance of characters from an uploaded text file, perfect for focus or presentation simulations.",
+  "requestFramePermissions": []
+}
